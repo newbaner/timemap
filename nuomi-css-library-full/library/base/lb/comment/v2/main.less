@@ -1,0 +1,14 @@
+/**
+ * @file -
+ * @author -
+ */
+
+@import "../common.less";
+
+.nm-lb-comment-v2() {
+    @current-path: "@{nm-base-path}/base/lb/comment/v2"; // TODO FIXME 编译优化
+
+    .nm-lb-comment();
+
+    background-image: e("url(@{current-path}/img/comment-2.png)");
+}

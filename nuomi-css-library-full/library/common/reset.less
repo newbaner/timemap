@@ -1,0 +1,74 @@
+/**
+ * @file css reset
+ * @author lizhifeng(lizhifeng@baidu.com)
+ */
+
+@import "variables.less";
+
+// @import "../../common/reset.less"; // 这里禁止引用
+
+@import "../../est/normalize.less";
+
+// .global-normalize();
+
+// TODO !!!
+.nm-global-reset() {
+
+    body {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -webkit-text-size-adjust: 100%;
+        -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+
+        background-color: @nm-bg-color;
+        // font-size: @nm-font-size-maintext;
+    }
+
+    input {
+        border: 0px;
+        background: transparent;
+    }
+
+    body,
+    button,
+    input,
+    select,
+    textarea,
+    pre {
+        font-size: 14px;
+        font-family: "Droid Sans", "Droid Sans Fallback", "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+        // font-family: Tahoma, Helvetica, "Microsoft Yahei", "微软雅黑", Arial, STHeiti;
+    }
+
+    input,
+    textarea {
+        -webkit-appearance: none;
+        border-radius: 0;
+    }
+
+    ul,
+    ol {
+        list-style: none;
+    }
+
+    a,
+    a:visited,
+    a:active {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    p,
+    span {
+        overflow: visible;
+    }
+
+}
+
+// 过于粗暴，默认不开启；用户手动开启 or 控件内部控制
+// .nm-global-reset();

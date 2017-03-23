@@ -1,0 +1,133 @@
+
+
+/*search*/
+#search{
+	height: 0.44rem;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	position: relative;
+}
+#search input{
+	width:30%;
+	height: 0.30rem;
+	border-radius:0.15rem;
+	border:0;
+	outline: 0;
+	padding:0 0.30rem;
+	position: absolute;
+	left: 0.14rem;
+	top: 0.09rem;
+	
+}
+
+	#search img{
+	width: 0.2rem;
+	height: 0.2rem;
+	position: absolute;
+	left:0.26rem ;
+	top: 0.15rem;
+	
+	}
+/*section内容显示区*/
+section{
+	flex: 1;
+	background: #fff;
+	margin: 0 0.1rem;
+	border-radius:0rem 0rem 0.1rem 0.1rem;
+	height: auto;
+	overflow-y: auto;
+}
+/*每一个店铺的信息内容*/
+section ul li{
+	display: flex;
+	justify-content: space-around;
+	height: 0.94rem;
+	position: relative;
+	/*border-bottom: 0.03px solid #55A532;*/
+}
+/*店铺的信息*/
+.shop_Info{
+	width: 2.7rem;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+/*店铺图片*/
+.picShow{
+	width: 0.68rem;
+	height: 0.68rem;
+	align-self: center;
+	border-radius: 0.04rem;
+}
+/*店铺具体信息*/
+.specific_info{
+	width: 1.9rem;
+}
+.shop_name{
+	font-size: 0.18rem;
+	color: #313431;
+	line-height: 0.25rem;
+}
+.shop_addr{
+	font-size: 0.12rem;
+	color: #7F7F7F;
+	line-height: 0.2rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.contact{
+	display: flex;
+	justify-content: space-between;
+	font-size: 0.12rem;
+	color: #c6c7c6;
+	line-height: 0.2rem;
+	
+}
+.contact .distance{
+	color: #5a5d5a;
+	
+}
+.contact .tel,.contact .more{
+	color: #c6c7c6;
+}
+/* .btn-default{
+	color: #55A532!important;
+	opacity: 0.8;
+} */
+
+/*店铺打烊时间信息*/
+.restTime{
+	width: 0.68rem;
+	padding: 0.12rem 0;
+}
+/*小时*/
+.restTime .hours{
+	font-size: 0.3rem;
+	color: #292c29;
+}
+/*分钟*/
+.restTime .minu{
+	font-size: 0.12rem;
+	color: #4a494a;
+}
+/*进度条边框*/
+.process_border{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 0.03rem;
+	width: 90%;
+	background: #55A532;
+	
+}
+.timeout{
+	color:#c6c7c6 ;
+	font-size:0.18rem;
+	line-height:0.68rem;
+	font-weight: bold;
+}
+footer ul:nth-child(3) li a{
+	color:#a2e34d;
+}

@@ -1,0 +1,115 @@
+
+body,html,h1,h2,h3,h4,h5,h6,img,p,ul,li,form,input,dl,dd,dt{margin: 0;padding: 0;font-family: "微软雅黑";}
+	body,html{height: 100%;}
+	html{font-size: 100px;}
+	html{background: #f8f3f7;}
+	li{list-style: none;}
+	img{border:none;}
+	a{text-decoration: none;}
+	
+body{
+	display: flex;
+	flex-direction: column;
+	font-size: 0.14rem;
+	overflow: hidden;
+	background: url(../img/bodybg.jpg) no-repeat;
+	background-size: cover;
+}
+
+/*header*/
+header{
+	width: 100%;
+	height: 0.66rem;
+	display: flex;
+	justify-content: space-around;
+	background: #fff;
+}
+header h1{
+	width:0.44rem ;
+	height: 0.44rem;
+	margin-left: 0.1rem;
+	align-self: center;
+}
+header h1 img{
+	width: 0.4rem;
+	height: 0.4rem;
+}
+header p{
+	font: bolder 0.28rem/0.44rem "微软雅黑";
+	color:#404040;
+	text-align: center;
+	width: 2.45rem;
+}
+header i{
+	font-size: 0.2rem;
+	color: #A2E34D;
+	font-weight: 600;
+	line-height: 0.66rem;
+	}
+/*footer*/
+footer{
+	width: 100%;
+	height: 0.55rem;
+	background: #484850;
+	display: flex;
+	position: relative;
+	/*border-top: 0.01rem solid #636363;*/
+}
+/*0.5像素边框*/
+footer:before{
+	content: "";
+	background: #636363;
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height:0.01rem;
+	transform-origin: left bottom;
+	transform: scale(1,0.5);
+}
+ footer ul{
+ 	width: 100%;
+	height: 0.55rem;
+ 	display: flex;
+ 	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+ }
+ 
+footer ul li{
+	width: 0.39rem;
+	height: 100%;
+	text-align: center;
+	
+}
+footer ul li a{
+	width: 0.39rem;
+	height: 100%;
+	display: block;
+	line-height: 100%;
+	color: white;
+	display:flex;
+	align-items: center;
+	justify-content: space-around;
+	flex-direction: column;
+}
+footer #mainUl li a img{
+	height: 0.25rem;
+	width: 0.25rem;
+}
+footer ul li a:focus{
+	color: #a2e34d;
+}
+
+footer ul li a i{
+	margin-top: 0.05rem;
+	font-size: 0.25rem !important;
+}
+footer ul li a:focus i{
+	color: #a2e34d!important;
+}
+footer ul li a span{
+		font-size: 0.12rem;
+		display: block;
+}

@@ -1,0 +1,44 @@
+/**
+ * @file -
+ * @author -
+ */
+
+@import "../common.less";
+
+.nm-lb-act() {
+    .inline-block();
+    padding: 0 3px;
+    height: 16px;
+    .border-radius(2px);
+    line-height: 16px;
+    text-align: center;
+    font-size: 9px;
+    border: 1px solid #f24;
+    background-color: #fff;
+    color: #f24;
+    font-style: normal;
+}
+
+.nm-lb-act-vip-tag() {
+    content: "";
+    position: absolute;
+    .size(27px, 16px);
+    left: -1px;
+    top: 0;
+    .border-top-left-radius(2px);
+    .border-bottom-left-radius(2px);
+    background-size: 18px 8px;
+    background-color: #f24;
+}
+
+.nm-lb-act-vip(@bg) {
+    .nm-lb-act();
+
+    position: relative;
+    padding-left: 29px;
+
+    &:after {
+        background: url(@bg) center center no-repeat;
+        .nm-lb-act-vip-tag();
+    }
+}

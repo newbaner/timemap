@@ -1,0 +1,24 @@
+/**
+ * @file -
+ * @author -
+ */
+
+@import "../common.less";
+@import "../border/main.less";
+
+
+.nm-layout-grid-block-fluid(@bg: #fff, @w: 100%) {
+    width: @w;
+    overflow: hidden;
+    background: @bg;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.nm-grid-col(@column: 1, @w: 100%) {
+    float: left;
+    width: @w / @column;
+    min-height: 1;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
