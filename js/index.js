@@ -12,6 +12,7 @@ $("#searchTex").on("blur",function(){
 		$.ajax("/data/data.json").done(function(data){
 			
 			console.log(data);
+			
 			var timeArr = data.showapi_res_body.result;//读取jsons的数据
 			for (var i = 0; i < timeArr.length; i++) {
 				var time = timeArr[i].detail_info.shop_hours,//营业时间
@@ -20,17 +21,29 @@ $("#searchTex").on("blur",function(){
 					tel = timeArr[i].telephone,//电话
 					score = timeArr[i].detail_info.overall_rating,
 					location = timeArr[i].detail_info.locatoin;
-					
 					tels.push(tel);
-				    url = "myMap.html?shopname="+shopname+"&time="+time+"&shopadd="+shopadd+"&tel="+tel+"&score="+score;
-				    $(".more").each(function(n){
-				    	$(this).click(function(){
-				    		console.log(url)
-				    		  window.open(url);
-				    		  url = "";
-				    	})
-				      
-				    }); 
+					
+					var href = timeArr[i].detail_info.detail_url;
+					
+					var obj = {
+						"time":time,
+						"shopname":shopname,
+						"shopadd":shopadd,
+						"tel":tel,
+						"score":score,
+						"location":location	
+					};
+					
+					console.log(href);
+					(function(obj,i){
+						$($(".more")[i]).on("click",function(){
+//							console.log(obj)
+							$.cookie.json = true;
+							$.cookie("info", obj, {expires:7, path:"/"});
+							window.location.href = "myMap.html";
+						})
+					})(obj,i);
+					
 				if(time){
 					if(time.charAt(0)=="全"||time.charAt(0)==="24"){
 						times.push("24:00");

@@ -1,29 +1,37 @@
  /************************非地图部分*************************/
-    //点击下拉按钮，店铺信息消失，显示地图
-    $("#unfold").onclick = function(){
-        $("#shop_show").style.display = "none";
-    }
-    
+   
+    $(function(){
+    	//读取cookie
+    	 var info =  jQuery.parseJSON($.cookie("info")||{});
+    	 
+			if(info.length !== 0){
+				$("#shop_name").html(info.shopname+"<i class='iconfont icon-moreunfold' id='unfold'></i>");
+				$("#hours").text(info.time);
+			 	$("#address").text(info.shopadd);
+			    $("#tel").text(info.tel);
+			    starLight(info.score);
+			    
+			    //点击下拉按钮，店铺信息消失，显示地图
+			    $("#unfold").on("click",function(){
+			    	alert(1)
+			        $("#shop_show").hide();
+			       
+			    })
+			}
+			
+    })
+ 
+ 
+////分割出传递的数据
 
-  /* 解析URL*/
-  //获取当前url
-  var url = decodeURIComponent(window.location.href);
-  //分割出传递的数据
-  var urlData = url.split("?")[1],
-      tempArr = urlData.split("&"),
-      data = [];
-      //将所有传过来的参数对应的值，放在data数组里
-     for(var i in tempArr){
-        data.push(tempArr[i].split("=")[1])
-     }
-     console.log(data)
-     //依次给当前页面需要显示的地方赋值：
+//   console.log(data)
+    /* //依次给当前页面需要显示的地方赋值：
      $("#shop_name").html(data[0]);
      $("#hours").html(data[1]);
      $("#address").html(data[2]);
      $("#tel").html(data[3]);
      starLight(data[4]);
-
+*/
     //评分星星的亮度控制
     function starLight(n){
         var  n = Math.round(n);
@@ -55,9 +63,9 @@
         AMap.event.addListener(geolocation, 'complete', onComplete);//返回定位信息
         AMap.event.addListener(geolocation, 'error', onError);      //返回定位出错信息
     });
- 
+   
 
-  map.on('moveend', getCity);
+map.on('moveend', getCity);
     function getCity() {
         map.getCity(function(data) {
             if (data['province'] && typeof data['province'] === 'string') {
@@ -66,7 +74,7 @@
         });
     }
     
-  function onComplete(data) {
+function onComplete(data) {
         var str=['定位成功'];
         str.push('经度：' + data.position.getLng());
         str.push('纬度：' + data.position.getLat());
