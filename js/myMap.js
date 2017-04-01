@@ -3,12 +3,13 @@
     $(function(){
     	//读取cookie
     	 var info =  jQuery.parseJSON($.cookie("info")||{});
-    	 
+    	 	console.log(info)
 			if(info.length !== 0){
 				$("#shop_name").html(info.shopname+"<i class='iconfont icon-moreunfold' id='unfold'></i>");
 				$("#hours").text(info.time);
 			 	$("#address").text(info.shopadd);
 			    $("#tel").text(info.tel);
+			    $("#shop_img img").attr("src",info.src);
 			    starLight(info.score);
 			    
 			    //点击下拉按钮，店铺信息消失，显示地图

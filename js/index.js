@@ -20,21 +20,22 @@ $("#searchTex").on("blur",function(){
 					shopadd = timeArr[i].address,// 店铺地址
 					tel = timeArr[i].telephone,//电话
 					score = timeArr[i].detail_info.overall_rating,
-					location = timeArr[i].detail_info.locatoin;
+					src = timeArr[i].src,
+					loc = timeArr[i].location;
 					tels.push(tel);
-					
 					var href = timeArr[i].detail_info.detail_url;
-					
+					console.log(loc);
 					var obj = {
 						"time":time,
 						"shopname":shopname,
 						"shopadd":shopadd,
 						"tel":tel,
 						"score":score,
-						"location":location	
+						"src":src,
+						"loc":loc	
 					};
 					
-					console.log(href);
+					
 					(function(obj,i){
 						$($(".more")[i]).on("click",function(){
 //							console.log(obj)
@@ -60,7 +61,8 @@ $("#searchTex").on("blur",function(){
 				$(".shop_name")[i].innerHTML=shopname;
 				//显示商家地址
 				$(".shop_addr")[i].innerHTML=shopadd;
-				
+				//商家图片
+				$($(".picShow img")[i]).attr("src",src);
 				
 			}
 			

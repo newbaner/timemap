@@ -60,6 +60,10 @@ section ul li{
 	align-self: center;
 	border-radius: 0.04rem;
 }
+.picShow img{
+	width: 67px;
+	height: 67px;
+}
 /*店铺具体信息*/
 .specific_info{
 	width: 1.9rem;
