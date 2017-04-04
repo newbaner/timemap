@@ -12,8 +12,32 @@ section{
 	overflow: hidden;
 	display: flex;
 	flex-direction: column;
+	position: relative;
+}
+#walkinfo{
+	position: fixed;
+    background-color: #fff;
+    max-height: 90%;
+    overflow-y: auto;
+    top: 0.76rem;
+    left: 10px;
+    width: 25%;
+    height: 30%;
+    z-index: 100;
+    display: none;
+}
+#fold{
+	width: 0.4rem;
+	height: 0.4rem;
+	border-radius: 0.2rem;
+	position: fixed;
+	right: 0.2rem;
+	bottom: 0.7rem;
+	background: url(../img/up.png) no-repeat;
+	/*display: none;*/
 }
 #map{
+	/*height: 30%;*/
 	flex: 1;
 }
 /*在地图下面显示具体的商家信息*/
@@ -22,6 +46,7 @@ section{
 	height: 70%;
 	border-radius: 5px 5px 0 0;
 	border-top: 2px solid #55A532;
+	display: block;
 	/*display: none;*/
 }
 #shop_show #shop_name{
@@ -39,6 +64,8 @@ section{
 }
 #shop_img{
 	height: 2.0rem;
+	display: flex;
+	justify-content: center;
 }
 #shop_img img{
 	height: 100%;
@@ -76,4 +103,65 @@ section{
 }
 footer ul:nth-child(1) li a{
 	color:#a2e34d;
+}
+/*信息框*/
+.info{
+	  border: solid 1px silver;
+	 
+}
+.info-top{
+	   position: relative;
+	   background: none repeat scroll 0 0 #F9F9F9;
+	   border-bottom: 1px solid #CCC;
+	   border-radius: 0.1rem 0.1rem 0 0;
+	   color: #1296db;
+	   font-weight: bold;
+	   outline: none;
+}
+.info-top div {
+        display: inline-block;
+       
+        font-size: 14px;
+        font-weight: bold;
+        line-height: 31px;
+        padding: 0 10px;
+ }
+.info-top img {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transition-duration: 0.25s;
+ }
+ .info-top img:hover {
+    box-shadow: 0px 0px 5px #000;
+}
+.info-middle {
+    font-size: 12px;
+    padding: 6px;
+    line-height: 20px;
+    color:#1296db ;
+}
+.info-middle a{
+	display: inline-block;
+	color:#1296db;
+	width: 30px;
+	height: 30px;
+	margin:0 30px;
+	text-align: center;
+}
+.info-middle a i{
+	font-size: 30px;
+}
+.info-middle a:hover{
+	color: #A2E34D;
+}
+.info-bottom {
+        height: 0px;
+        width: 100%;
+        clear: both;
+        text-align: center;
+}
+.info-bottom img {
+    position: relative;
+    z-index: 104;
 }

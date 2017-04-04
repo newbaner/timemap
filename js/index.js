@@ -1,85 +1,161 @@
-$('[data-toggle="popover"]').popover();
-  $('[data-toggle="tooltip"]').tooltip();
-var uids = [],
-	times = [],
-	tels = [],
-	search = $("#searchTex").val(),
-	 url = "";
-//搜索框失去焦点时
-$("#searchTex").on("blur",function(){
-                       
-		//模拟JSON数据 ../data/data.json  
-		$.ajax("/data/data.json").done(function(data){
-			
-			console.log(data);
-			
-			var timeArr = data.showapi_res_body.result;//读取jsons的数据
-			for (var i = 0; i < timeArr.length; i++) {
-				var time = timeArr[i].detail_info.shop_hours,//营业时间
-					shopname= timeArr[i].name,//店铺名称
-					shopadd = timeArr[i].address,// 店铺地址
-					tel = timeArr[i].telephone,//电话
-					score = timeArr[i].detail_info.overall_rating,
-					src = timeArr[i].src,
-					loc = timeArr[i].location;
-					tels.push(tel);
-					var href = timeArr[i].detail_info.detail_url;
-					console.log(loc);
-					var obj = {
-						"time":time,
-						"shopname":shopname,
-						"shopadd":shopadd,
-						"tel":tel,
-						"score":score,
-						"src":src,
-						"loc":loc	
-					};
-					
-					
-					(function(obj,i){
-						$($(".more")[i]).on("click",function(){
-//							console.log(obj)
-							$.cookie.json = true;
-							$.cookie("info", obj, {expires:7, path:"/"});
-							window.location.href = "myMap.html";
-						})
-					})(obj,i);
-					
-				if(time){
-					if(time.charAt(0)=="全"||time.charAt(0)==="24"){
-						times.push("24:00");
-					}
-					else{
-						var timee = time.split("-")[1];
-						times.push(timee);
-					}
+document.documentElement.style.fontSize = document.documentElement.clientWidth / 3.75 +"px";
 
-				}else{                                                                                                       
-					times.push("20:00")
-				}
-				//显示商家名字
-				$(".shop_name")[i].innerHTML=shopname;
-				//显示商家地址
-				$(".shop_addr")[i].innerHTML=shopadd;
-				//商家图片
-				$($(".picShow img")[i]).attr("src",src);
-				
-			}
-			
-			//点击“call"弹出该店联系电话
-			$(".tel").each(function(n){
-				//调用Bootstrap模板
-				//.tooltip-inner的样式
-				$(this).attr("data-original-title",tels[n]); 
+//初始定位
+    var map = new AMap.Map("mapContainer", {
+        resizeEnable: true
+    });
+    map.plugin('AMap.Geolocation', function() {
+        geolocation = new AMap.Geolocation({
+            enableHighAccuracy: true,//是否使用高精度定位，默认:true
+            timeout: 10000,          //超过10秒后停止定位，默认：无穷大
+            buttonOffset: new AMap.Pixel(300, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+            zoomToAccuracy: true,      //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+            buttonPosition:'RB'
+        });
+        map.addControl(geolocation);
+        geolocation.getCurrentPosition();
+        AMap.event.addListener(geolocation, 'complete', onComplete);//返回定位信息
+
+    });
+
+    function onComplete(data) {
+		var pos=[];	
+        pos.push(data.position.getLng());
+        pos.push(data.position.getLat());
+//     return pos;
+       AMap.service(["AMap.PlaceSearch"], function() {
+        var placeSearch = new AMap.PlaceSearch({ //构造地点查询类
+            pageSize:10,
+            typ:'餐饮服务',
+            pageIndex: 1,
+            city: "011", //城市
+            map: map,
+            panel: "panel"
+        });
+       
+        //中心点坐标
+        var cpoint = pos;
+
+			$('[data-toggle="popover"]').popover();
+		  $('[data-toggle="tooltip"]').tooltip();
+			var uids = [],
+					times = [],
+					tels = [],
+					search = $("#searchTex").val(),
+				 	url = "";
+		//搜索框失去焦点时
+			$("#searchTex").on("blur",function(){
+			    var keyword = $("#searchTex").val();
+			    
+			    console.log(keyword)
+			    if(keyword !== ""){
+			    		placeSearch.searchNearBy(keyword, cpoint, 500, function(status, result) {
+			    		
+						 			console.log(result)
+						 			if(status!="no_data"){
+									 				var data = result.poiList.pois||[];
+									 			//搜索的条数
+									 			var len = data.length;
+									 					var timeArr =  randomTime(len);					 		
+									 		//复制节点
+									 			for (var i = 0; i < len-1; i++){
+									 				var cloneli = 	$("#lis li:last").clone(true);
+									 				$("#lis").append(cloneli);
+									 			
+									 			}
+									 			for (var i = 0; i < len; i++){
+									 				
+									 					data[i].shoptime = timeArr[i];
+								 					  var time = data[i].shoptime,//营业时间
+																shopname= data[i].name,//店铺名称
+																shopadd = data[i].address,// 店铺地址
+																tel = data[i].tel,//电话
+																score = 4,
+																src = data[i].photos[0]||"../img/picShow1.jpg",
+																distance = data[i].distance,
+																loc = data[i].location;
+																tels.push(tel);
+																var obj = {
+																					"time":time,
+																					"shopname":shopname,
+																					"shopadd":shopadd,
+																					"tel":tel,
+																					"score":score,
+																					"src":src,
+																					"distance":distance,
+																					"loc":loc	
+																}
+								 					  		$(function(obj,i){
+																	$($(".more")[i]).on("click",function(){
+																		$.cookie.json = true;
+																		$.cookie("info", obj, {expires:7, path:"/"});
+																		window.location.href = "myMap.html";
+																	})
+																}(obj,i));
+									 					  	if(time){
+																		if(time.charAt(0)=="全"||time.charAt(0)==="24"){
+																			times.push("24:00");
+																		}
+																		else{
+																			var timee = time.split("-")[1];
+																			times.push(timee);
+																		}
+													
+																}else{                                                                                                       
+																		times.push("20:00")
+																}
+														//显示商家名字
+														$(".shop_name")[i].innerHTML=shopname;
+														//显示商家地址
+														$(".shop_addr")[i].innerHTML=shopadd;
+														//距离
+															$(".distance span")[i].innerHTML = distance;
+														//商家图片
+														$($(".picShow img")[i]).attr("src",src.url);
+														
+													
+									 			}
+									 			
+									 			//点击“call"弹出该店联系电话
+												
+									 			  console.log(data);
+									 				console.log(times);
+													//显示时间在页面上
+													restTime(times);
+						 						//点击“call"弹出该店联系电话
+												
+						        }
+						 				$(".tel").each(function(n){
+														//调用Bootstrap模板
+														//.tooltip-inner的样式
+														console.log(tels)
+//														data-original-title
+														$(this).attr("title",tels[n]);
+														$(this).attr("data-original-title",tels[n]); 
+													})
+						 			})
+						 		
+			    }else{
+			    	alert("你输入的关键字我们没有找到呢\n你是否要找“美食”??");
+			    	$("#searchTex").val("美食")
+			    	//window.reload();
+			    }
+  
 			})
-			console.log(times);
-			//显示时间在页面上
-			restTime(times);
-			
-		});
-				
-	
-	
+	})
+}
+    
+//随机营业时间函数 
+	function randomTime(len){
+		var arr = ["10:00-18:30","09:00-21:30","10:00-22:00","11:00-22:30","11:30-20:00","10:00-24:00","10:00-23:59","09:45-19:00","10:20-21:20","11:30-24:00","12:00-24:00","10:00-23:00"];
+		var timeArr = [];
+		for(var i = 0;i<len;i++){
+			var num = parseInt(Math.random()*12);
+			timeArr.push(arr[num]);
+		}
+		return timeArr;
+	}
+ 
 //设置营业时间终止时间距离当前时间的进度条，显示在每个li的下面
 //.process_border
 //.process_border的width通过计算得到：
@@ -130,7 +206,7 @@ $("#searchTex").on("blur",function(){
 		}
 	}
 	//var times = ["19:00","24:00","14:24","18:00","17:30","19:35"];
-});
+
 
 
 //搜索框获得焦点变长
