@@ -1,3 +1,4 @@
+ 
 /*头部显示城市*/
 #citybox{
 	width: 1.0rem;
@@ -17,14 +18,27 @@ section{
 #walkinfo{
 	position: fixed;
     background-color: #fff;
-    max-height: 90%;
     overflow-y: auto;
     top: 0.76rem;
     left: 10px;
-    width: 25%;
-    height: 30%;
-    z-index: 100;
+    width: 50%;
+    max-height: 80%;
+    height: auto;
+    z-index: 999;
+    opacity: 0.9;
+    border-radius: 0.08rem;
+    color: #0086B3;
     display: none;
+}
+.pathnav_title{
+	height: 0.6rem;
+	border-bottom: 1px solid #dedede;
+	background: #F5F5F5;
+	text-align: center;
+}
+#walkinfo span{
+	color: #55A532;
+	line-height: 0.35rem;
 }
 #fold{
 	width: 0.4rem;
@@ -32,22 +46,30 @@ section{
 	border-radius: 0.2rem;
 	position: fixed;
 	right: 0.2rem;
-	bottom: 0.7rem;
+	bottom: 0.45rem;
 	background: url(../img/up.png) no-repeat;
 	/*display: none;*/
+	z-index: 1000;
 }
 #map{
-	/*height: 30%;*/
-	flex: 1;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 999;
+	bottom: 0;
 }
 /*在地图下面显示具体的商家信息*/
 #shop_show{
 	width: 100%;
-	height: 70%;
+	height: 100%;
 	border-radius: 5px 5px 0 0;
 	border-top: 2px solid #55A532;
 	display: block;
-	/*display: none;*/
+	position: absolute;
+	z-index: 999;
+	bottom: 0;
+	background: #EAFFEA;
+	
 }
 #shop_show #shop_name{
 	height: 0.35rem;
@@ -87,17 +109,12 @@ section{
 #textInfo p b{
 	font-size: 0.16rem;
 	color: #4a494a;
-	overflow: hidden;
+
 }
 #textInfo p:nth-child(2){
 	flex-shrink: 0;
 }
-#textInfo p b:nth-child(2){
-	width: 60%;
-	height: 0.61rem;
-	flex-shrink: 0;
 
-}
 #textInfo #score i{
 	color:#ced7d6 ;
 }

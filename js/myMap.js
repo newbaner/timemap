@@ -1,6 +1,7 @@
  /************************非地图部分*************************/
  var info =  jQuery.parseJSON($.cookie("info")||{});
-var pos = [info.loc.lng,info.loc.lat];
+var pos = [info.loc.lng,info.loc.lat]||[];
+var currpos = [];
     $(function(){
     	 $("#shop_show").show();
     	//读取cookie
@@ -19,12 +20,15 @@ var pos = [info.loc.lng,info.loc.lat];
 			    $("#unfold").on("click",function(){
 			        $("#shop_show").hide();
 			       	$("#fold").show();
+			       	$("#map").show();
 			      // 	$("#map").css({height:"100%"});
 			    })
 			     $("#fold").on("click",function(){
 			    	//$("#map").css({height:"30%"});
 			        $("#shop_show").show();
 			       	$("#fold").hide();
+					$("#walkinfo").hide();
+			       	
 			    })
 			}
 		//评分星星的亮度控制
@@ -44,31 +48,16 @@ var pos = [info.loc.lng,info.loc.lat];
     
 
  /**************************地图部分****************************/
-  console.log(info.loc.lng,info.loc.lat)
-  var map, geolocation;
+  console.log(info.currloc);
+  var currloc = info.currloc;
+	var map, geolocation;
     //加载地图，调用浏览器定位服务
     map = new AMap.Map('map', {
         resizeEnable: true,
-        mapStyle:'fresh'
+     	zoom:16,
+       	center: currloc,
+         mapStyle:'fresh'
     });
-    map.plugin('AMap.Geolocation', function() {
-        geolocation = new AMap.Geolocation({
-            enableHighAccuracy: true,//是否使用高精度定位，默认:true
-            timeout: 10000,          //超过10秒后停止定位，默认：无穷大
-            buttonOffset: new AMap.Pixel(300, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
-            zoomToAccuracy: true,      //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false	
-          	
-            buttonPosition:'RB',
-          
-          
-        });
-        map.addControl(geolocation);
-        geolocation.getCurrentPosition();
-        AMap.event.addListener(geolocation, 'complete', onComplete);//返回定位信息
-        AMap.event.addListener(geolocation, 'error', onError);      //返回定位出错信息
-    });
-   
-
 map.on('moveend', getCity);
     function getCity() {
         map.getCity(function(data) {
@@ -77,56 +66,82 @@ map.on('moveend', getCity);
             }
         });
     }
-    
-function onComplete(data) {
-        var str=['定位成功'];
-        str.push('经度：' + data.position.getLng());
-        str.push('纬度：' + data.position.getLat());
-        if(data.accuracy){
-             str.push('精度：' + data.accuracy + ' 米');
-        }//如为IP精确定位结果则没有精度信息
-        str.push('是否经过偏移：' + (data.isConverted ? '是' : '否'));
-       console.log(str.join('<br>')) ;
- 		var currpos=[];	
-        currpos.push(data.position.getLng());
-        currpos.push(data.position.getLat());
-		
-		return currpos;
-    	
-        $("#shop_show").show();
-    }
-    //解析定位错误信息
-    function onError(data) {
-      console.log('定位失败');
-    }
 
-   //添加目标点在地图
+  //添加目标点在地图
 marker = new AMap.Marker({
 	position: pos,
 	title: info.name,
 	size : new AMap.Size(24,24),
 	icon:'../img/location.png'
  });
-	marker.setMap(map);
+ selfmarker = new AMap.Marker({
+	position: currloc,
+	title: "me",
+	size : new AMap.Size(24,24),
+	icon:'../img/self.png'
+ });
+ 
+ marker.setMap(map);
+ selfmarker.setMap(map);
+AMap.service(["AMap.Walking"], function() {
+ 	var walking = new AMap.Walking({
+    	map: map,
+    	panel: ""
+	}); 
+	
+	$("#map").on("click",".qubei",function(){
+    	closeInfoWindow();
+    	$("#shop_show").hide();
+    	$("#fold").show();
+	    $("#walkinfo").show();
+	    	//根据起终点坐标规划步行路线
+	    	console.log(currloc,pos)
+	    		
+	   		 walking.search(currloc, pos,function(status, result){
+	   		 $(".amap-lib-marker-to").css({'background':"url(../img/location.png)"});
+	   		 	console.log(result);
+	   		 	var routes = result.routes;
+	   		 	console.log(routes);
+	   		 	var steps = [];
+	   		 	var hh = parseInt(routes[0].time/3600),
+	   		 		mm = parseInt(routes[0].time/60);
+	   		 	
+	   		 	var html = "<p class='pathnav_title'>饭前走一走，多吃一两口 <br>=。= 跟我来<i class='iconfont icon-skip'></i><br>走"+hh+"小时"+mm+"分钟就够啦</p>";
+	   		 	for(var i = 0;i<routes.length;i++){
+	   		 		steps.push(routes[i].steps);
+	   		 	}
+	   		 	console.log(steps)
+	   		 	for(var n = 0;n<steps.length;n++){
+	   		 		for(var j = 0;j<steps[n].length;j++){
+	   		 			html+= "<p>step"+(j+1)+":<span>"+steps[n][j].instruction+"</span></p>";
+	   		 		}
+	   		 	}
+	   		 	html+="<p style='text-align:center'>不用谢==</p>";
+	   		 	$("#walkinfo").html(html);
+	   		 });
+  		 })
+	});
+
 $("#shop_show").on("click",function(){
 	 map.setZoomAndCenter(16, [info.loc.lng,info.loc.lat]);
 });
 
   AMap.event.addListener(marker, 'click', function() {
         infoWindow.open(map, marker.getPosition());
-            
+          $("#walkinfo").hide(); 
  });
 
    //实例化信息窗体
     var title = info.shopname,
         content = [];
     content.push("<p class='content_add'>"+info.shopadd+"</p>");
-    content.push("<a href = '#' class='diancai'><i class='iconfont icon-diancai'></i></a><a href = '#'><i class='iconfont icon-shouye'></i></a><a href = 'javascript:void(0)' class='qubei' id='test'><i class='iconfont icon-qubei'></i></a>");
+    content.push("<a href = '#' class='diancai'><i class='iconfont icon-diancai'></i></a><a href = 'tel:"+info.tel+ "class = 'callfor'><i class='iconfont icon-shouye'></i></a><a href = 'javascript:void(0)' class='qubei' id='test'><i class='iconfont icon-qubei aaa'></i></a>");
     var infoWindow = new AMap.InfoWindow({
         isCustom: true,  //使用自定义窗体
         content: createInfoWindow(title, content.join("<br/>")),
         offset: new AMap.Pixel(16, -45)
     });
+////点击电话按钮，显示电话号码
 
     //构建自定义信息窗体
     function createInfoWindow(title, content) {
@@ -173,19 +188,4 @@ $("#shop_show").on("click",function(){
         map.clearInfoWindow();
     }
     
-    console.log($("#test"));
-   $(".qubei").on("click",function(event){
-   	event.stopPropagation();
-   	console.log(event.target);
-   		alert(1);
-   	  closeInfoWindow();
-   	  
-   	    var walking = new AMap.Walking({
-	        map: map,
-	        panel: "walkinfo"
-	    }); 
-    //根据起终点坐标规划步行路线
-    walking.search(currpos, pos);
-   });
-  
-   
+    

@@ -1,10 +1,10 @@
 
 @font-face {font-family: "iconfont";
-  src: url('iconfont.eot?t=1491297994238'); /* IE9*/
-  src: url('iconfont.eot?t=1491297994238#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('iconfont.woff?t=1491297994238') format('woff'), /* chrome, firefox */
-  url('iconfont.ttf?t=1491297994238') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('iconfont.svg?t=1491297994238#iconfont') format('svg'); /* iOS 4.1- */
+  src: url('iconfont.eot?t=1491529344759'); /* IE9*/
+  src: url('iconfont.eot?t=1491529344759#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff?t=1491529344759') format('woff'), /* chrome, firefox */
+  url('iconfont.ttf?t=1491529344759') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1491529344759#iconfont') format('svg'); /* iOS 4.1- */
 }
 
 .iconfont {
@@ -15,11 +15,19 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-tongxun:before { content: "\e646"; }
+
 .icon-refresh:before { content: "\e764"; }
 
 .icon-denglu:before { content: "\e62f"; }
 
+.icon-lingshi:before { content: "\e61f"; }
+
+.icon-shicai:before { content: "\e621"; }
+
 .icon-iconmima:before { content: "\e609"; }
+
+.icon-fushi:before { content: "\e600"; }
 
 .icon-iconfontditu:before { content: "\e614"; }
 
@@ -29,7 +37,11 @@
 
 .icon-icon1460188752552:before { content: "\e627"; }
 
+.icon-jiaotong:before { content: "\e605"; }
+
 .icon-shouye:before { content: "\e637"; }
+
+.icon-unie620:before { content: "\e664"; }
 
 .icon-taskmanagement:before { content: "\e635"; }
 
@@ -39,7 +51,15 @@
 
 .icon-iconmap:before { content: "\e65f"; }
 
+.icon-16jiushui:before { content: "\e60a"; }
+
+.icon-riyongpin:before { content: "\e622"; }
+
+.icon-yiliao:before { content: "\e87b"; }
+
 .icon-clock:before { content: "\e61b"; }
+
+.icon-zhufang01:before { content: "\e642"; }
 
 .icon-ditu:before { content: "\e6ba"; }
 
@@ -47,7 +67,13 @@
 
 .icon-diancai:before { content: "\e676"; }
 
+.icon-yongcan:before { content: "\e65c"; }
+
+.icon-lvyou:before { content: "\e624"; }
+
 .icon-icon_map:before { content: "\e70a"; }
+
+.icon-shuma:before { content: "\e648"; }
 
 .icon-qubei:before { content: "\e696"; }
 
@@ -56,4 +82,8 @@
 .icon-operation:before { content: "\e620"; }
 
 .icon-favorites-filling:before { content: "\e63f"; }
+
+.icon-changge:before { content: "\e895"; }
+
+.icon-wujiaoxing:before { content: "\e865"; }
 

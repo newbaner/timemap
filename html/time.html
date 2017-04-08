@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>timeBill</title>
+		<link rel="shortcut icon" href="../img/logo.ico"/>
+		<meta  name="viewport" content="width=device-width,initial-scale=1.0"/>
+		<link rel="stylesheet" href="../Iconfont/iconfont.css" />
+		<link rel="stylesheet" href="../css/timeBase.css" />
+		<link rel="stylesheet" href="../css/time.css" />
+		<script type="text/javascript" src="../jQuery/jquery-1.12.4.js"></script>
+		<script src="../jQuery/jquery.cookie.js"></script>
+	</head>
+	<body>
+		<header>
+			<div id="head">
+				<div id="back"><i class="icon iconfont icon-icon-history"></i></div>
+				<p><h1><img src="../img/logo.png"/></h1><span>timeMap</span></p>
+				<div id="echart"><i class="icon iconfont icon-skip"></i></div>
+			</div>
+		</header>
+		<section>
+			<div id="addBill">
+				<div id="chart"></div>
+				<div id="add"></div>
+				<div id="total">
+					<p>有史以来，共挥霍</p>
+					<p id="monthtotal" style="text-align: right;color:orange;">1235.0</p>
+				</div>
+			</div>
+			<div id="billList">
+				<div id="billListbg">
+				</div>
+				<!--<div class="date">
+					
+				</div>-->
+				<div id="lists">
+					<div class="list">
+						<div class="classicon fl"><i class="iconfont icon-shicai"></i></div>
+						<div class="className fl">食材</div>
+						<div class="money fl font8">125.0</div>
+						<div class="fl font8 currdate"><span class="day">02</span>日</div>
+					</div>
+					
+				</div>
+			</div>
+			<div id="addpage">
+				<div id="spacial">
+					<div id="spacial_icon"><i class="iconfont icon-wujiaoxing"></i></div><span class="spacial_name">一般</span>
+					<div id="spacial_money"><input type="number" placeholder="0.00" id="input"/></div>
+				</div>
+				<div id="exampleList">
+					<div class="ex_icon fl"><p><i class="iconfont icon-wujiaoxing"></i></p><div class="ex_name">一般</div></div>
+					<div class="ex_icon fl"><p><i class="iconfont icon-yongcan"></i></p><div class="ex_name">用餐</div></div>
+					<div class="ex_icon fl"><p><i class="iconfont icon-jiaotong"></i></p><div class="ex_name">交通</div></div>
+					<div class="ex_icon fl"><p><i class="iconfont icon-fushi"></i></p><div class="ex_name">服饰</div></div>
+					<div class="ex_icon fl"><p><i class="iconfont icon-unie620"></i></p><div class="ex_name">妆饰</div></div>
+					<div class="ex_icon fl"><p><i class="iconfont icon-riyongpin"></i></p><div class="ex_name">日用</div></div>
+					<div class="ex_icon fl"><p><i class="iconfont icon-shicai"></i></p><div class="ex_name">食材</div></div>
+					<div class="ex_icon fl"><p><i class="iconfont icon-lingshi"></i></p><div class="ex_name">零食</div></div>
+					<div class="ex_icon fl"><p><i class="iconfont icon-16jiushui"></i></p><div class="ex_name">酒水</div></div>
+					<div class="ex_icon fl"><p><i class="iconfont icon-zhufang01"></i></p><div class="ex_name">住房</div></div>
+					<div class="ex_icon fl"><p><i class="iconfont icon-tongxun"></i></p><div class="ex_name">通讯</div></div>
+					<div class="ex_icon fl"><p><i class="iconfont icon-yiliao"></i></p><div class="ex_name">医疗</div></div>
+					<div class="ex_icon fl"><p><i class="iconfont icon-lvyou"></i></p><div class="ex_name">旅游</div></div>
+					<div class="ex_icon fl"><p><i class="iconfont icon-shuma"></i></p><div class="ex_name">数码</div></div>
+					<div class="ex_icon fl"><p><i class="iconfont icon-operation"></i></p><div class="ex_name">其他</div></div>
+				</div>
+				<div id="confirm"><i class="icon iconfont icon-qubei"></i></div>
+			</div>
+			
+		</section>
+		
+	</body>
+	
+	<script src="../js/add.js"></script>
+	<script src="../js/load.js"></script>
+	<script>
+		document.documentElement.style.fontSize = document.documentElement.clientWidth / 3.75 +"px";
+	</script>
+</html>

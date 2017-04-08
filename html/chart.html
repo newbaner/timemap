@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="shortcut icon" href="../img/logo.ico"/>
+		<meta  name="viewport" content="width=device-width,initial-scale=1.0"/>
+		<link rel="stylesheet" href="../Iconfont/iconfont.css" />
+		<link rel="stylesheet" href="../css/timeBase.css" />
+		<link rel="stylesheet" href="../css/chart.css" />
+		<script type="text/javascript" src="../jQuery/jquery-1.12.4.js"></script>
+		<script src="../jQuery/jquery.cookie.js"></script>
+		<script src="../js/echarts.common.min.js"></script>
+		
+	</head>
+	<body>
+		<header>
+			<div id="head">
+				<div id="back"><i class="icon iconfont icon-icon-history"></i></div>
+				<p><h1><img src="../img/logo.png"/></h1><span>timeMap</span></p>
+				<div id="echart"><i class="icon iconfont icon-skip"></i></div>
+			</div>
+		</header>
+		<section>
+			<div id="month">
+				<a href="javascript:void(0)" class="lastm"><</a>
+				<p class="month"><span>4</span>月</p>
+				<a href="javascript:void(0)" class="nextm">></a>
+			</div>
+			<div class="chart"></div>
+			
+			
+		</section>
+	</body>
+	<script>
+		document.documentElement.style.fontSize = document.documentElement.clientWidth / 3.75 +"px";
+	</script>
+	<script type="text/javascript" src="../js/mychart.js" ></script>
+</html>

@@ -1,0 +1,23 @@
+header{
+	width: 100%;
+	height: 0.62rem;
+	border-bottom:2px solid #f2f2f2 ;
+	background: url(../img/bodybg.jpg);
+	background-size: cover;
+}
+#month{
+	width: 100%;
+	height: 0.4rem;
+	display: flex;
+	justify-content: space-around;
+	background:#f8f8f8 ;
+	line-height: 0.4rem;
+}
+#month a{
+	font-size: 0.18rem;
+	color: #333;
+	font-weight: bold;
+}
+#month .month{
+	color: #f6b347;
+}

@@ -1,0 +1,17 @@
+  .amap-logo {
+        right: 0 !important;
+        left: auto !important;
+        display: none;
+    }
+    
+    .amap-copyright {
+        right: 70px !important;
+        left: auto !important;
+    }  
+    
+.amap-lib-marker-from{
+	opacity: 0;
+}
+.amap-lib-marker-to{
+	opacity: 0;
+}

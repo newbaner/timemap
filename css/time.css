@@ -1,0 +1,178 @@
+
+header{
+	width: 100%;
+	height: 1.62rem;
+	background: url(../img/shop_picB.jpg) no-repeat;
+	background-clip: border-box;
+	background-size: cover;
+	
+}
+section{
+	position: relative;
+	
+}
+#addBill{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	height: 0.5rem;
+	position: relative;
+	line-height: 0.20rem;
+	color: #C0C0C0;
+}
+#chart{
+	width: 0.48rem;
+	height: 0.48rem;
+	background: url(../img/chart.png) no-repeat;
+}
+#add{
+	width: 0.98rem;
+	height:0.98rem;
+	border-radius: 0.49rem;
+	background: url(../img/add.gif) no-repeat;
+	background-size:cover ;
+	position: absolute;
+	left: 36%;
+	top:-0.48rem;
+	transition: all 0.4s ; 
+}
+#add:hover{
+	transform: rotate(-270deg);
+}
+#billList{
+	height:auto;
+	width: 100%;
+	clear: both;
+	flex: 1;
+	margin-top: 0.1rem;
+	position: relative;
+	color: #a6a6b5;
+	background: #ffffff;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+#billListbg{
+	width: 0.02rem;
+	height: 100%;
+	background: #f3f3f3;
+	margin: 0 auto;
+	
+}
+
+.date{
+	position: absolute;
+	left: 38%;
+	top:0.1rem ;
+	width: 1.5rem;
+}
+.date div{width: 0.27;}
+.subtotal{
+	margin-left: 0.4rem;
+}
+#lists{
+	width: 2.16rem;
+	height: 100%;
+	position: absolute;
+	left: 47%;
+	top: 0.3rem;
+	
+}
+.list{
+	width: 100%;
+	height:0.26rem ;
+	margin: 0.2rem 0;
+	line-height: 0.26rem;
+	display: flex;
+	justify-content: space-between;
+}
+.classicon{
+	width: 0.26rem;
+	height: 0.26rem;
+	border-radius: 0.13rem;
+	background: orange;
+	color: white;
+	margin-right:0.15rem ;
+	text-align: center;
+	
+}
+.className{
+	margin-right:0.08rem;
+	
+}
+
+.currdate{
+	width: 0.8rem;
+	text-align: center;
+}
+.font8{
+	font-size: 0.08rem;
+}
+#addpage{
+	position: absolute;
+	left: 0;
+	top: -0.50rem;
+	z-index: 100;
+	width: 100%;
+	height: 100%;
+	background:#fff ;
+}
+
+#spacial{
+	width: 100%;
+	height: 0.54rem;
+	background: #81aca9;
+	color:#fff;
+	display: flex;
+	justify-content: space-between;
+	line-height: 0.54rem;
+}
+#spacial_icon{
+	width: 0.36rem;
+	height: 0.36rem;
+	border-radius: 0.2rem;
+	border: 2px solid #fff;
+	text-align: center;
+	margin-top: 0.08rem;
+	line-height: 0.36rem;
+}
+#spacial_icon i{
+	font-size: 0.2rem;
+}
+.ex_icon{
+	width: 0.32rem;
+	height: 0.5rem;
+	margin: 0.15rem;
+}
+.ex_icon p{
+	width:  0.32rem;
+	height: 0.32rem;
+	border-radius: 0.16rem;
+	background: #0086B3;
+	text-align: center;
+	line-height: 0.32rem;
+	color: white;
+	
+}
+#input{
+	border: 0;
+	width: 0.5rem;
+	background: #81aca9 ;
+	text-align: center;
+	outline: none;
+	color: #fff;
+}
+#confirm{
+	width: 0.46rem;
+	height: 0.46rem;
+	border-radius: 0.23rem;
+	background: #FFA500;
+	color: #fff;
+	text-align: center;
+	line-height: 0.34rem;
+	font-size: 40px!important;
+	margin:0rem auto;
+	margin-top: 2.7rem;
+}
+#confirm i{
+	font-size: 26px!important;
+}
