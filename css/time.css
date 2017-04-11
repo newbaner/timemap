@@ -1,4 +1,6 @@
-
+::-webkit-input-placeholder {
+	 color: #fff;
+	}
 header{
 	width: 100%;
 	height: 1.62rem;

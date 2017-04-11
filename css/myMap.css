@@ -31,7 +31,7 @@ section{
     display: none;
 }
 .pathnav_title{
-	height: 0.6rem;
+	height: 0.4rem;
 	border-bottom: 1px solid #dedede;
 	background: #F5F5F5;
 	text-align: center;
@@ -68,7 +68,7 @@ section{
 	position: absolute;
 	z-index: 999;
 	bottom: 0;
-	background: #EAFFEA;
+	background: #FFFDEF;
 	
 }
 #shop_show #shop_name{
@@ -96,9 +96,10 @@ section{
 	height: 60%;
 }
 #textInfo p{
-	height: 0.31rem;
+	/*height: 0.5rem;*/
 	flex-shrink: 1;
-	/*line-height: 0.31rem;*/
+	line-height: 0.31rem;
+	
 }
 #textInfo p span{
 	padding: 0.13rem;
@@ -109,12 +110,18 @@ section{
 #textInfo p b{
 	font-size: 0.16rem;
 	color: #4a494a;
-
 }
-#textInfo p:nth-child(2){
-	flex-shrink: 0;
+/*#textInfo p:nth-child(2){
+	display: flex;
+	justify-content: left;
+	
 }
-
+#textInfo p:nth-child(3){
+	display: flex;
+	justify-content: left;
+	
+}
+*/
 #textInfo #score i{
 	color:#ced7d6 ;
 }

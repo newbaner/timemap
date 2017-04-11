@@ -1,4 +1,5 @@
 $(function(){
+
 	$.post("../php/loadbill.php",{},function(data){
 		if (data.status === 1) { 
 				var lists = data.billlist;

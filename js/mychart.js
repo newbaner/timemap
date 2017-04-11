@@ -4,6 +4,17 @@
     },"json")
  })
   
+  $("#back").on("click",function(){
+  	window.location.href = "time.html";
+  })
+  $("#echart").on("click",function(){
+  	window.location.href = "time.html";
+  	
+  })
+   $("h1").on("click",function(){
+  	window.location.href = "index.html";
+  	
+  })
   $(".lastm").on("click",function(){
   		$(".month span").text(parseInt($(".month span").text())-1);
   		$.post("../php/loadbill.php",{},function(data){
@@ -25,25 +36,21 @@
   		if(data[i].month.split("-")[0]==currMonth){
 	  			enableData.push(data[i]);
   		}
-  		
   	}
-  	//console.log(enableData);
-////		for(var i = 0;i<enableData.length;i++){
-//			var money = 0;
-//			$.each(enableData, function(m,dat) {
-//					
-//					if(dat.name===enableData[m].name){
-//						
-//						money +=	parseFloat(enableData[m].money);
-//						enableData.splice(m,1);
-//					}
-//					dat.money = money;
-//					console.log(enableData[m].money)
-//					console.log(enableData[m].name)
-//			});
-//			
-////		}
-  	
+  		
+		for(var j = 0;j<enableData.length;j++){
+				var curr = enableData[j];
+				for(var n= 0;n<enableData.length;n++){
+						var per = enableData[n];
+						if(n!=j){
+							if(curr.name === per.name){
+								per.money = parseFloat(per.money) + parseFloat(curr.money);
+								enableData.splice(j,1);
+								
+							}
+						}
+				}
+		}
   	return enableData;
   }
   
@@ -51,17 +58,21 @@
   function chart(enableData){
   	
   	if(enableData.length==0){
-  		$(".chart").html("<div style='background:#A6E1EC;width:100%;height:100%'>还没消费呢</div>")
+  		$(".chart").html("<div style='background:#FFECEC;width:100%;height:100%'><i class='icon iconfont icon-yongcan' style='font-size:200px;margin-left:25%;color:#fff';display:'block'></i><p style='font-size:30px;font-weight:bold;color:#FFF;text-align:center' >还没消费呢</p></div>")
   	}
   	else{
   	var names = [],
   			values = [],
-  			obj = [];
+  			obj = [],
+  			colors=[];
   	for(var i=0;i<enableData.length;i++){
+  		
   		names.push(enableData[i].name);
   		values.push(enableData[i].money);
   		obj.push({name:enableData[i].name,value:enableData[i].money});
+  		colors.push(enableData[i].color);
   	}
+  
   var myChart = echarts.init(document.getElementsByClassName("chart")[0]);
  
 
@@ -75,6 +86,7 @@
 	        x: 'left',
 	        data:names
 	    },
+	    color:colors,
 	    series: [
 	        {
 	            name:'个人花销',

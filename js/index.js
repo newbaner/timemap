@@ -1,4 +1,11 @@
-document.documentElement.style.fontSize = document.documentElement.clientWidth / 3.75 +"px";
+function calSize(){
+	var clientWidth = window.innerWidth || document.documentElement.clientWidth;
+	var Htmlsize = clientWidth/3.75;
+	document.documentElement.style.fontSize = Htmlsize + 'px';
+}
+
+calSize();
+window.addEventListener('resize', calSize);
 $(function(){
 	
 
@@ -41,9 +48,9 @@ var uids = [],
  	url = "";
 //搜索框失去焦点时
 var timeArr = [];
-$("#searchTex").on("blur",function(){
+$("#searchTex").on("keyup",function(){
 	
-	var keyword = $("#searchTex").val();
+	var keyword = $("#searchTex").val()||"美食";
 	AMap.service(["AMap.PlaceSearch"], function() {
 		var placeSearch = new AMap.PlaceSearch({ //构造地点查询类
 		    pageSize:10,

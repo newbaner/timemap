@@ -91,6 +91,7 @@ footer ul li a{
 	color: white;
 	display:flex;
 	align-items: center;
+	text-decoration: none;
 	justify-content: space-around;
 	flex-direction: column;
 }

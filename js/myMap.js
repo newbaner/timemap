@@ -106,7 +106,7 @@ AMap.service(["AMap.Walking"], function() {
 	   		 	var hh = parseInt(routes[0].time/3600),
 	   		 		mm = parseInt(routes[0].time/60);
 	   		 	
-	   		 	var html = "<p class='pathnav_title'>饭前走一走，多吃一两口 <br>=。= 跟我来<i class='iconfont icon-skip'></i><br>走"+hh+"小时"+mm+"分钟就够啦</p>";
+	   		 	var html = "<p class='pathnav_title'>饭前走一走，多吃一两口 <br>走"+hh+"小时"+mm+"分钟就够啦</p>";
 	   		 	for(var i = 0;i<routes.length;i++){
 	   		 		steps.push(routes[i].steps);
 	   		 	}
